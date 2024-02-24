@@ -43,10 +43,8 @@ int main() {
 		ans.push_back(sum);
 	}
 
-// 맨 앞자리수 출력
 	if (num1[0] != 0) cout << 1;
 
-	// ans벡터 거꾸로 출력
 	for (int i = ans.size() - 1; i >= 0; i--)
 	{
 		cout << ans[i];
