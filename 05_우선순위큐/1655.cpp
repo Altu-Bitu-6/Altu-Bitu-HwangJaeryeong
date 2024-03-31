@@ -1,59 +1,43 @@
-#include <iostream>
-#include <queue>
-
+#include<iostream>
+#include<queue>
 
 using namespace std;
-#define fi first
-#define se second
-#define endl '\n'
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
 
 priority_queue<int> maxHeap;
-priority_queue<int, vector<int>, greater<int>> minHeap;
-
-int findMin(int n){
-    while(n--){
-        int num, answer;
-        cin >> num;
-
-        if(maxHeap.empty() || num < maxHeap.top()){
-            maxHeap.push(num);
-        } else {
-            minHeap.push(num);
-        }
-
-        // 힙의 크기 조정하여 중간값 계산
-        if (maxHeap.size() > minHeap.size() + 1) {
-            minHeap.push(maxHeap.top());
-            maxHeap.pop();
-        } else if (minHeap.size() > maxHeap.size() + 1) {
-            maxHeap.push(minHeap.top());
-            minHeap.pop();
-        }
-
-        if (maxHeap.size() > minHeap.size()){
-            cout << maxHeap.top() << endl;
-        } else if (maxHeap.size() < minHeap.size()){
-            cout << minHeap.top() << endl;
-        } else if(maxHeap.size() == minHeap.size()){
-            cout << min(maxHeap.top(), minHeap.top()) << endl;
-        }
-    }
-}
-
-
+priority_queue<int,vector<int>,greater<int>> minHeap;
 
 int main() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-  int n;
-  cin >> n;
+    int t;
+    cin >> t;
 
-  findMin(n);
+    while (t--) {
+        int a, size;
+        cin >> a;
+        if (maxHeap.size() == minHeap.size()) {
+            maxHeap.push(a);
+        }
+        else {
+            minHeap.push(a);
+        }
+        if (!maxHeap.empty()&&!minHeap.empty()&&maxHeap.top()>minHeap.top()) {
+            int max_val, min_val;
+            max_val = maxHeap.top();
+            min_val = minHeap.top();
+            maxHeap.pop();
+            minHeap.pop();
+            maxHeap.push(min_val);
+            minHeap.push(max_val);
 
-  return 0;
+
+        }
+        cout << maxHeap.top() << '\n';
+    }
+
+
+
+    return 0;
 }
