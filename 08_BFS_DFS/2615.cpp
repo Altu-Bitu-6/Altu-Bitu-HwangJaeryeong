@@ -15,7 +15,7 @@ int dy[] = { 0, 1, 1, 1 };
 int dx[] = { 1, 1, 0, -1 };
 vector<pair<int, int>> pp;
  
-// vector에 넣은 좌료를 정렬
+// vector에 넣은 좌표를 정렬
 bool sorting(pair<int, int> a, pair<int, int> b) {
     if (a.second >= b.second)
         if (a.second == b.second)
@@ -28,7 +28,7 @@ bool sorting(pair<int, int> a, pair<int, int> b) {
     else
         return true;
 }
- 
+
 // 현재 좌표에 대해 박스 밖으로 나가는지?
 bool isRight(int y, int x) {
     if (y<1 || x<1 || y>N || x>N) return false;
